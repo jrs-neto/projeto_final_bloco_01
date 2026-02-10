@@ -59,7 +59,7 @@ export abstract class Produto {
   }
 
 
-  public visualizar(): void {
+  public function visualizar(): any {
 
     let tipo: string;
 
