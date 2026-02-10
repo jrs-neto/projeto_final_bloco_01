@@ -17,7 +17,7 @@ export function main() {
     console.log(Colors.bg.black, Colors.fg.yellow,
       "*****************************************************");
     console.log("                                                     ");
-    console.log("                LOJA GENERATION                      ");
+    console.log("                   INFO TECH                         ");
     console.log("                                                     ");
     console.log("*****************************************************");
     console.log("                                                     ");
@@ -36,7 +36,7 @@ export function main() {
     opcao = Input.questionInt("");
 
     if (opcao === 0) {
-      console.log(Colors.fg.greenstrong, "\nLOJA GENERATION - Onde você encontra os melhores produtos de informática!");
+      console.log(Colors.fg.greenstrong, "\nINFO TECH - Onde você encontra os melhores produtos de informática!");
       sobre();
       console.log(Colors.reset, "");
       process.exit(0);
@@ -46,6 +46,7 @@ export function main() {
       case 1:
         console.log(Colors.fg.whitestrong, "\n\nListar todos os Produtos\n\n", Colors.reset);
         produtos.listarProdutos();
+        keyPress();
         break;
 
       case 2:
@@ -53,6 +54,7 @@ export function main() {
         console.log("Digite o número do produto: ");
         const numero = Input.questionInt("");
         console.log(produtos.listarProdutosId(numero));
+        keyPress();
 
         break;
 
@@ -80,13 +82,13 @@ export function main() {
           marca: marcaProduto,
           valor: valorProduto
         } as Produto);
-
+        keyPress();
         break;
 
       case 4:
         console.log(Colors.fg.whitestrong, "\n\nAtualizar Produto\n\n", Colors.reset);
         atualizarProduto();
-
+        keyPress();
         break;
       case 5:
         console.log(Colors.fg.whitestrong, "\n\nDeletar Produto\n\n", Colors.reset);
@@ -95,7 +97,7 @@ export function main() {
 
         const produto = produtos.buscarNoArray(numeroDeletar);
         produtos.deletarProduto(produto as Produto);
-
+        keyPress();
         break;
       default:
         console.log(Colors.fg.whitestrong, "\nOpção Inválida!\n", Colors.reset);
@@ -116,33 +118,7 @@ function sobre(): void {
   console.log("*****************************************************");
 }
 
-function produtoParaTeste(): void {
 
-  produtos.cadastrarProduto({
-    nome: "Notebook Gamer",
-    codigo: 1001,
-    cor: "Preto",
-    marca: "Dell",
-    valor: 7500.00
-  } as Produto);
-
-  produtos.cadastrarProduto({
-    nome: "Smartphone",
-    codigo: 1002,
-    cor: "Azul",
-    marca: "Samsung",
-    valor: 3200.00
-  } as Produto);
-
-  produtos.cadastrarProduto({
-    nome: "Fone de Ouvido Bluetooth",
-    codigo: 1003,
-    cor: "Branco",
-    marca: "JBL",
-    valor: 450.00
-  } as Produto);
-
-}
 
 /* Atualizar Produto */
 function atualizarProduto(): void {
@@ -181,12 +157,46 @@ function atualizarProduto(): void {
     valor = Input.questionFloat("", { defaultInput: valor });
 
     produtos.atualizarProduto({
+      codigo: numero,
       nome: nome,
       cor: cor,
       marca: marca,
       valor: valor,
     } as Produto);
   }
+}
+
+function keyPress(): void {
+  console.log(Colors.reset, "\nPressione enter para continuar...");
+  Input.prompt();
+}
+
+function produtoParaTeste(): void {
+
+  produtos.cadastrarProduto({
+    nome: "Notebook Gamer",
+    codigo: 1001,
+    cor: "Preto",
+    marca: "Dell",
+    valor: 7500.00
+  } as Produto);
+
+  produtos.cadastrarProduto({
+    nome: "Smartphone",
+    codigo: 1002,
+    cor: "Azul",
+    marca: "Samsung",
+    valor: 3200.00
+  } as Produto);
+
+  produtos.cadastrarProduto({
+    nome: "Fone de Ouvido Bluetooth",
+    codigo: 1003,
+    cor: "Branco",
+    marca: "JBL",
+    valor: 450.00
+  } as Produto);
+
 }
 
 

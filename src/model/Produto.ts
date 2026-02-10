@@ -1,5 +1,3 @@
-import { formatarMoeda } from "../util/Currency";
-
 export abstract class Produto {
 
   private _nome: string;
@@ -56,21 +54,6 @@ export abstract class Produto {
 
   public set valor(value: number) {
     this._valor = value;
-  }
-
-
-  public function visualizar(): any {
-
-    let tipo: string;
-
-    console.log("\n************************************");
-    console.log("        DADOS DO PRODUTO              ");
-    console.log("************************************");
-    console.log(`Número do produto: ${this._nome}`);
-    console.log(`Código do produto: ${this._codigo}`);
-    console.log(`Cor do produto: ${this._cor}`);
-    console.log(`Marca do produto: ${this._marca}`);
-    console.log(`Valor do produto: ${formatarMoeda(this._valor)}`);
   }
 
 }

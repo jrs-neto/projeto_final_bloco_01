@@ -20,9 +20,13 @@
   "homepage": "https://github.com/jrs-neto/projeto_final_bloco_01#readme",
   "dependencies": {
     "@types/iconv-lite": "^0.0.1",
-    "@types/node": "^25.2.2",
     "@types/readline-sync": "^1.4.8",
     "iconv-lite": "^0.7.2",
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
