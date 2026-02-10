@@ -53,7 +53,7 @@ export function main() {
         console.log(Colors.fg.whitestrong, "\n\nListar Produto pelo ID\n\n", Colors.reset);
         console.log("Digite o número do produto: ");
         const numero = Input.questionInt("");
-        console.log(produtos.listarProdutosId(numero));
+        produtos.listarProdutosId(numero);
         keyPress();
 
         break;

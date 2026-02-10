@@ -37,7 +37,24 @@ export class ProdutoController implements ProdutoRepository {
     }
   }
 
+  // Método Auxiliar para Validação
+  private validarProduto(produto: Produto): boolean {
+    if (produto.nome === "") {
+      console.log(Colors.fg.red, `\nO nome do produto não pode ser vazio!`, Colors.reset);
+      return false;
+    }
+
+    if (produto.valor < 0) {
+      console.log(Colors.fg.red, `\nO valor do produto não pode ser negativo!`, Colors.reset);
+      return false;
+    }
+
+    return true;
+  }
+
   cadastrarProduto(produto: Produto): boolean {
+    if (!this.validarProduto(produto)) return false;
+
     const buscaProduto = this.buscarNoArray(produto.codigo);
 
     if (buscaProduto !== null) {
@@ -54,6 +71,7 @@ export class ProdutoController implements ProdutoRepository {
   }
 
   atualizarProduto(produto: Produto): Produto | null {
+    if (!this.validarProduto(produto)) return null;
 
     const buscaProduto = this.buscarNoArray(produto.codigo);
 
